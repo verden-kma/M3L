@@ -27,9 +27,9 @@ def k_means(observations: np.ndarray, k: int):
         for obsInd in range(obs_num):
             if (clusters[obsInd][1] not in grouped_by_centroid):
                 grouped_by_centroid[clusters[obsInd][1]] = np.array([])
-            temp1 = grouped_by_centroid[clusters[obsInd][1]]
-            temp2 = observations[obsInd]
-            grouped_by_centroid[clusters[obsInd][1]] = np.concatenate((temp1, temp2), axis=0)
+            curr = grouped_by_centroid[clusters[obsInd][1]]
+            additional = observations[obsInd]
+            grouped_by_centroid[clusters[obsInd][1]] = np.concatenate((curr, additional), axis=0)
         for centInd in range(k):
             centroids[centInd] = np.mean(grouped_by_centroid[centInd])
         prev_clusters = clusters
