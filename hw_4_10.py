@@ -20,9 +20,10 @@ class MyLSTMCell(torch.nn.Module):
         input_concat = torch.cat((h, x))
         ft = sigmoid(torch.matmul(self._wf, input_concat) + self._bf)
         it = sigmoid(torch.matmul(self._wi, input_concat) + self._bi)
-        ctd = tanh(torch.matmul(self._wc, input_concat), self._bc)
+        ctd = tanh(torch.matmul(self._wc, input_concat) + self._bc)
         cx = ft * c + it * ctd
         ot = sigmoid(torch.matmul(self._wo, input_concat) + self._bo)
         hx = ot * tanh(cx)
         return hx, cx
+
 
