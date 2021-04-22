@@ -25,5 +25,3 @@ class MyLSTMCell(torch.nn.Module):
         ot = sigmoid(torch.matmul(self._wo, input_concat) + self._bo)
         hx = ot * tanh(cx)
         return hx, cx
-
-
